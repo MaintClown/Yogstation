@@ -280,6 +280,7 @@
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
 			visible_message("<span class='warning'>[src] has grabbed [M][(zone_selected == "l_arm" || zone_selected == "r_arm")? " by their hands!":" passively!"]</span>")
+			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "handhold", /datum/mood_event/handhold)
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -1373,7 +1374,7 @@
 			update_transform()
 		if("lighting_alpha")
 			sync_lighting_plane_alpha()
-			
+
 /mob/living/proc/is_convert_antag()
     var/list/bad_antags = list(
         /datum/antagonist/clockcult,
@@ -1387,4 +1388,4 @@
         if(mind?.has_antag_datum(antagcheck))
             return TRUE
     return FALSE
-	
+

@@ -27,6 +27,11 @@
 /datum/mood_event/lamphug/add_effects(mob/friend)
 	description = "<span class='nicegreen'>I hugged a lamp called [friend.name].</span>\n"
 
+/datum/mood_event/handhold //i am an abomination before the eyes of God and the Vatican
+	description = "<span class='nicegreen'>My hand was held!</span>\n"
+	mood_change = 3
+	timeout = 5 MINUTES
+
 /datum/mood_event/arcade
 	description = "<span class='nicegreen'>I beat the arcade game!</span>\n"
 	mood_change = 3
@@ -103,7 +108,7 @@
 	description = "<span class='nicegreen'>I have seen the truth, praise the almighty one!</span>\n"
 	mood_change = 40 //maybe being a cultist isnt that bad after all
 	hidden = TRUE
-	
+
 /datum/mood_event/changeling
 	description = "<span class='nicegreen'>No feeling supersedes our hunger.</span>\n" //if i could i'd just make them not get all those human feelings
 	mood_change = 40
