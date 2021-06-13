@@ -79,11 +79,16 @@
 					if(!(user.mobility_flags & MOBILITY_STAND))
 						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
 										"<span class='notice'>You shake [M] trying to get [M.p_them()] up!</span>")
+						AdjustStun(-60)
+						AdjustKnockdown(-60)
+						AdjustUnconscious(-60)
+						AdjustSleeping(-100)
+						AdjustParalyzed(-60)
+						AdjustImmobilized(-60)
+						set_resting(FALSE)
 					else
 						user.visible_message("<span class='notice'>[user] hugs [M] to make [M.p_them()] feel better!</span>", \
 								"<span class='notice'>You hug [M] to make [M.p_them()] feel better!</span>")
-					if(M.resting)
-						M.set_resting(FALSE, TRUE)
 				else
 					user.visible_message("<span class='notice'>[user] pets [M]!</span>", \
 							"<span class='notice'>You pet [M]!</span>")
