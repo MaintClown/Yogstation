@@ -109,6 +109,8 @@
 
 	if(is_species(H, /datum/species/moth) && prob(50))
 		heirloom_type = /obj/item/flashlight/lantern/heirloom_moth
+	if(is_species(H, /datum/species/human/felinid) && prob(50))
+		heirloom_type = /obj/item/toy/cattoy
 	else
 		switch(quirk_holder.mind.assigned_role)
 			//Service jobs
@@ -127,27 +129,29 @@
 			if("Bartender")
 				heirloom_type = pick(/obj/item/reagent_containers/glass/rag, /obj/item/clothing/head/that, /obj/item/reagent_containers/food/drinks/shaker)
 			if("Curator")
-				heirloom_type = pick(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice)
+				heirloom_type = pick(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice, /obj/item/toy/toy_dagger, /obj/item/toy/clockwork_watch)
 			if("Assistant")
-				heirloom_type = /obj/item/storage/toolbox/mechanical/old/heirloom
+				heirloom_type = pick(/obj/item/storage/toolbox/mechanical/old/heirloom, /obj/item/storage/wallet, /obj/item/coin)
 			//Security/Command
 			if("Captain")
-				heirloom_type = /obj/item/reagent_containers/food/drinks/flask/gold
+				heirloom_type = pick(/obj/item/reagent_containers/food/drinks/flask/gold, /obj/item/clothing/head/collectable/captain)
+			if("Head of Personnel")
+				heirloom_type = /obj/item/clipboard)
 			if("Head of Security")
-				heirloom_type = /obj/item/book/manual/wiki/security_space_law
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/glasses/nightglasses)
 			if("Warden")
-				heirloom_type = /obj/item/book/manual/wiki/security_space_law
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/glasses/nightglasses)
 			if("Security Officer")
-				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec, /obj/item/clothing/glasses/nightglasses)
 			if("Detective")
-				heirloom_type = pick(/obj/item/reagent_containers/food/drinks/bottle/whiskey, /obj/item/taperecorder/empty)
+				heirloom_type = pick(/obj/item/reagent_containers/food/drinks/bottle/whiskey, /obj/item/taperecorder/empty, /obj/item/clothing/neck/tie/detective)
 			if("Lawyer")
-				heirloom_type = pick(/obj/item/gavelhammer, /obj/item/book/manual/wiki/security_space_law)
+				heirloom_type = pick(/obj/item/gavelhammer, /obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/neck/tie)
 			//RnD
 			if("Research Director")
-				heirloom_type = /obj/item/toy/plush/slimeplushie
+				heirloom_type = pick(/obj/item/toy/plush/slimeplushie, /obj/item/toy/toy_xeno, /obj/item/toy/redbutton, /obj/item/toy/nuke)
 			if("Scientist")
-				heirloom_type = /obj/item/toy/plush/slimeplushie
+				heirloom_type = pick(/obj/item/toy/plush/slimeplushie, /obj/item/toy/toy_xeno, /obj/item/toy/redbutton, /obj/item/toy/nuke)
 			if("Roboticist")
 				heirloom_type = pick(subtypesof(/obj/item/toy/prize)) //look at this nerd
 			//Medical
@@ -158,7 +162,7 @@
 			if("Chemist")
 				heirloom_type = pick(/obj/item/book/manual/wiki/chemistry, /obj/item/clothing/mask/vape)
 			if("Virologist")
-				heirloom_type = /obj/item/reagent_containers/syringe
+				heirloom_type = pick(/obj/item/reagent_containers/syringe, /obj/item/toy/toy_xeno)
 			//Engineering
 			if("Chief Engineer")
 				heirloom_type = pick(/obj/item/clothing/head/hardhat/white, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
@@ -170,7 +174,7 @@
 			if("Quartermaster")
 				heirloom_type = pick(/obj/item/stamp, /obj/item/stamp/denied)
 			if("Cargo Technician")
-				heirloom_type = /obj/item/clipboard
+				heirloom_type = pick(/obj/item/clipboard, /obj/item/stamp, /obj/item/stamp/denied)
 			if("Shaft Miner")
 				heirloom_type = pick(/obj/item/pickaxe/mini, /obj/item/shovel)
 
@@ -178,7 +182,8 @@
 		heirloom_type = pick(
 		/obj/item/toy/cards/deck,
 		/obj/item/lighter,
-		/obj/item/dice/d20)
+		/obj/item/dice/d20,
+		/obj/item/coin)
 	heirloom = new heirloom_type(get_turf(quirk_holder))
 	var/list/slots = list(
 		"in your left pocket" = SLOT_L_STORE,

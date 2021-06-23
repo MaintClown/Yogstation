@@ -105,6 +105,10 @@
 	if(slot == SLOT_GLASSES)
 		return 1
 
+/obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
+	user.visible_message("<span class='suicide'>[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	return OXYLOSS
+
 /obj/item/clothing/glasses/night
 	name = "night vision goggles"
 	desc = "You can totally see in the dark now!"
@@ -115,9 +119,11 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
-/obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return OXYLOSS
+/obj/item/clothing/glasses/nightglasses
+	name = "nightglasses"
+	desc = "These don't do much except making you look badass."
+	icon_state = "night"
+	item_state = "glasses"
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
@@ -132,7 +138,7 @@
 	item_state = "headset" // lol
 	vision_correction = 1
 
-	
+
 
 /obj/item/clothing/glasses/material
 	name = "optical material scanner"
