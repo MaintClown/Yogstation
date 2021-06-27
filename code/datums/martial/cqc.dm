@@ -39,7 +39,7 @@
 
 /datum/martial_art/cqc/can_use(mob/living/carbon/human/H) //this is used to make chef CQC only work in kitchen
 	var/area/A = get_area(H)
-	if(just_a_cook && !(istype(A, /area/crew_quarters/kitchen)))
+	if(just_a_cook && !(istype(A, /area/crew_quarters/kitchen, /area/crew_quarters/bar)))
 		return FALSE
 	return ..()
 
