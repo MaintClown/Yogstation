@@ -652,3 +652,17 @@
 		if(!H.get_active_held_item())
 			to_chat(quirk_holder, "<span class='danger'>You can't keep your eyes off [I.name].</span>")
 			H.UnarmedAttack(I)
+
+/datum/quirk/splitpersonality
+	name = "Split Personality"
+	desc = "You have an uninvited, permanent guest inside of your brain."
+	value = -2
+	mob_trait = TRAIT_SPLITPERSONALITY
+	gain_text = "<span class='danger'>You have an uninvited guest inside of your brain.</span>"
+	lose_text = "<span class='notice'>You feel alone, are they gone?</span>"
+	medical_record_text = "Patient has been diagnosed with a split personality."
+	
+	/datum/quirk/splitpersonality/on_spawn()
+		if(B.can_gain_trauma(/datum/brain_trauma/severe/split_personality, 5))
+			B.brain_gain_trauma(/datum/brain_trauma/severe/split_personality, 5)
+
