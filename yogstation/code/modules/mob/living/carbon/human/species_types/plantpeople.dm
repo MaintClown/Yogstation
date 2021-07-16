@@ -14,7 +14,7 @@
 	coldmod = 1.5
 	acidmod = 2
 	speedmod = 0.33
-	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/plant
+	meat = /obj/item/reagent_containers/food/snacks/grown/cabbage //come on.. it's funny.
 	disliked_food = MEAT | DAIRY
 	liked_food = VEGETABLES | FRUIT | GRAIN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
