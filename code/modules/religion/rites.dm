@@ -57,49 +57,20 @@
 
 /*********Technophiles**********/
 
-/datum/religion_rites/synthconversion
-	name = "Synthetic Conversion"
-	desc = "Convert a human-esque individual into a (superior) Android."
-	ritual_length = 1 MINUTES
+/datum/religion_rites/botcreation
+	name = "Lesser Robotic Manufacturing"
+	desc = "Manufacture a robotic companion."
+	ritual_length = 45 SECONDS
 	ritual_invocations = list(
-	"By the inner workings of our god...",
-	"... We call upon you, in the face of adversity...",
-	"... to complete us, removing that which is undesirable..."
-	)
-	invoke_msg = "... Arise, our champion! Become that which your soul craves, live in the world as your true form!!"
-	favor_cost = 350
+	"I call upon the machine spirits, aid me in creation...",
+	"... The energy shall take the form of its shell...")
+	invoke_msg = "...AND LET IT BE BORN!!"
+	favor_cost = 50 // two bluespace cells, 80MJ. needs sci and mining to be competent.
 
-/datum/religion_rites/synthconversion/perform_rite(mob/living/user, atom/religious_tool)
-	if(!ismovable(religious_tool))
-		to_chat(user, "<span class='warning'>This rite requires a religious device that individuals can be buckled to.</span>")
-		return FALSE
-	var/atom/movable/movable_reltool = religious_tool
-	if(!movable_reltool)
-		return FALSE
-	if(!LAZYLEN(movable_reltool.buckled_mobs))
-		. = FALSE
-		if(!movable_reltool.can_buckle) //yes, if you have somehow managed to have someone buckled to something that now cannot buckle, we will still let you perform the rite!
-			to_chat(user, "<span class='warning'>This rite requires a religious device that individuals can be buckled to.</span>")
-			return
-		to_chat(user, "<span class='warning'>This rite requires an individual to be buckled to [movable_reltool].</span>")
-		return
-	return ..()
-
-/datum/religion_rites/synthconversion/invoke_effect(mob/living/user, atom/religious_tool)
-	if(!ismovable(religious_tool))
-		CRASH("[name]'s perform_rite had a movable atom that has somehow turned into a non-movable!")
-	var/atom/movable/movable_reltool = religious_tool
-	if(!movable_reltool?.buckled_mobs?.len)
-		return FALSE
-	var/mob/living/carbon/human/human2borg
-	for(var/i in movable_reltool.buckled_mobs)
-		if(istype(i,/mob/living/carbon/human))
-			human2borg = i
-			break
-	if(!human2borg)
-		return FALSE
-	human2borg.set_species(/datum/species/android)
-	human2borg.visible_message("<span class='notice'>[human2borg] has been converted by the rite of [name]!</span>")
+/datum/religion_rites/botcreation/invoke_effect(atom/religious_tool, mob/user)
+	var/altar_turf = get_turf(religious_tool)
+	var/chosenbot = pick(/mob/living/simple_animal/bot/medbot, /mob/living/simple_animal/bot/cleanbot, /mob/living/simple_animal/bot/firebot, /obj/item/drone_shell) // nothing too bad.
+	new chosenbot(altar_turf)
 	return TRUE
 
 /*********Capitalists**********/
