@@ -1477,6 +1477,10 @@
 	name = "Knee-high (Bee)"
 	icon_state = "bee_knee"
 
+/datum/sprite_accessory/socks/knee_programmer
+	name = "Knee-high (Programmer)"
+	icon_state = "knee_lpink"
+
 /datum/sprite_accessory/socks/black_norm
 	name = "Normal (Black)"
 	icon_state = "black_norm"
@@ -1891,7 +1895,7 @@
 /datum/sprite_accessory/moth_wings
 	icon = 'yogstation/icons/mob/wings.dmi' //yogs moth sprite fix
 	color_src = null
-	
+
 /datum/sprite_accessory/moth_wingsopen
 	icon = 'icons/mob/moth_wingsopen.dmi'
 	color_src = null
