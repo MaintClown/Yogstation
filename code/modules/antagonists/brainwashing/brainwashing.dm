@@ -34,6 +34,7 @@
 /datum/antagonist/brainwashed/greet()
 	to_chat(owner, "<span class='warning'>Your mind reels as it begins focusing on a single purpose...</span>")
 	to_chat(owner, "<big><span class='warning'><b>Follow the Directives, at any cost!</b></span></big>")
+	SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg')) //very jarring noise that make them look at their chat
 	var/i = 1
 	for(var/X in objectives)
 		var/datum/objective/O = X
