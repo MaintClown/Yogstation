@@ -143,6 +143,9 @@
 /area/shuttle/escape/luxury
 	name = "Luxurious Emergency Shuttle"
 
+/area/shuttle/escape/xenophobia
+	name = "Orion Compliant Emergency Shuttle"
+
 /area/shuttle/escape/arena
 	name = "The Arena"
 	noteleport = TRUE
