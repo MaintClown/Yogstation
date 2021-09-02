@@ -347,6 +347,37 @@
 		alarm_beep()
 		return ..()
 
+/obj/machinery/scanner_gate/humansupremacy
+	name = "supremacy detection field"
+	density = FALSE //allows shuttle airlocks to close, nothing but an approved passenger gets past CanPass
+	locked = TRUE
+	use_power = FALSE
+	resistance_flags = INDESTRUCTIBLE
+
+/obj/machinery/scanner_gate/humansupremacy/Bumped(atom/movable/AM)
+	if(!isliving(AM) || !is_species(AM, /datum/species/human))
+		alarm_beep()
+		return ..()
+
+/obj/machinery/scanner_gate/humansupremacy/Cross(atom/movable/mover, turf/target)
+	. = ..()
+	if(is_species(mover, /datum/species/human))
+		set_scanline("scanning", 10)
+		return TRUE
+
+	if(!isliving(mover)) //No stowaways
+		return FALSE
+	return FALSE
+
+/obj/machinery/scanner_gate/humansupremacy/auto_scan(atom/movable/AM)
+	return
+
+/obj/machinery/scanner_gate/humansupremacy/attackby(obj/item/W, mob/user, params)
+	return
+
+/obj/machinery/scanner_gate/humansupremacy/emag_act(mob/user)
+	return
+
 /mob/living/simple_animal/hostile/bear/fightpit
 	name = "fight pit bear"
 	desc = "This bear's trained through ancient Russian secrets to fear the walls of its glass prison."
